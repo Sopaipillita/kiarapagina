@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+  </head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <body>
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        background-color: pink;
+        margin: 0;
+      }
+
+      .step1 h1 {
+        margin: 3rem 0 8rem;
+        font-size: 2.5rem;
+      }
+
+      #heart {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: relative;
+        transform: rotate(-45deg);
+        transition: transform 0.5s ease-in-out;
+        margin: 0 auto;
+        cursor: pointer;
+      }
+
+      #heart::before,
+      #heart::after {
+        content: "";
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+      }
+      #heart::before {
+        top: -50px;
+        left: 0;
+      }
+      #heart::after {
+        left: 50px;
+        top: 0;
+      }
+
+      .step2 {
+        display: none;
+        margin: 3rem 0 0;
+        font-size: 18px;
+      }
+
+      .step2 img {
+        display: block;
+        width: 200px;
+        height: auto;
+        margin: 0.5rem auto;
+      }
+
+      .step {
+        max-width: 700px;
+        margin: 3rem auto;
+      }
+
+      button {
+        display: block;
+        color: #fff;
+        background-color: green;
+        font-size: 1.5rem;
+        border: none;
+        padding: 10px;
+        text-align: center;
+        margin: 0.5rem auto;
+        border-radius: 7px;
+        cursor: pointer;
+      }
+
+      .quiz {
+        display: none;
+      }
+    </style>
+
+    <main>
+      <div class="step1 step">
+        <h1>Haz click en el corazón.</h1>
+        <div id="heart"></div>
+      </div>
+
+      <div class="step2 step">
+        <p>
+          Has sido atrapada por Onisac Otaner, un ser misterioso con poderes
+          inhumanos. En una sala oscura, te enfrentas a él, quien te observa en
+          silencio. Con voz grave, te dice: <br /><br />
+          “Si deseas escapar, tendrás que responder correctamente a las
+          preguntas que te haré. Cada error te acercará a la perdición. Tu
+          destino está en tus manos.”
+          <br /><br />
+          El aire se carga de tensión mientras te prepara para su primer enigma.
+          El tiempo corre y tus respuestas determinarán si lograrás salir con
+          vida.
+        </p>
+        <img src="assets/image.webp" />
+
+        <button id="step2-btn">Empezar</button>
+      </div>
+
+      <div class="quiz">
+        <div class="question" question="1">
+          <div class="image-quiz">
+            <img src="assets/a.webp" />
+          </div>
+          <div class="quiz-text">
+            <h1 class="question-text" question="1">
+              ¿donde miramos el atardecer por 1era vez?
+            </h1>
+            <p class="incorrect answer" question="1">a) En la casa del David</p>
+            <p class="incorrect answer" question="1">b) En el colegio</p>
+            <p class="correct answer" question="1">c) En la plaza</p>
+          </div>
+        </div>
+
+        <div class="question" question="2">
+          <div class="image-quiz">
+            <img src="assets/2.webp" />
+          </div>
+          <div class="quiz-text">
+            <h1 class="question-text" question="2">
+              ¿Cual es mi pelicula favorita?
+            </h1>
+            <p class="correct answer" question="2">a) Se levanta el viento</p>
+            <p class="incorrect answer" question="2">b) Mi vecino David</p>
+            <p class="incorrect answer" question="2">c) FNAF The Movie</p>
+          </div>
+        </div>
+
+        <div class="question" question="3">
+          <div class="image-quiz">
+            <img src="assets/chalri_garcia.webp" />
+          </div>
+          <div class="quiz-text">
+            <h1 class="question-text" question="3">
+              Cual de estas es una de mis canciones favoritas?
+            </h1>
+            <p class="incorrect answer" question="3">a) El Mono Tremendo - Luis Alberto Spinetta</p>
+            <p class="correct answer" question="3">b) La Sed Verdadera - Pescado Rabioso</p>
+            <p class="incorrect answer" question="3">c) Facts - Pvblo Chill-E</p>
+          </div>
+        </div>
+
+        <div class="question" question="4">
+          <div class="image-quiz">
+            <img src="assets/4.webp" />
+          </div>
+          <div class="quiz-text">
+            <h1 class="question-text" question="4">
+              Que fue lo 1ero que te di al vernos?
+            </h1>
+            <p class="correct answer" question="4">a) Melatonina</p>
+            <p class="incorrect answer" question="4">b) Gelatina</p>
+            <p class="incorrect answer" question="4">c) Meialotina</p>
+          </div>
+        </div>
+
+        <div class="question" question="5">
+          <div class="image-quiz">
+            <img src="assets/miprepucio.webp" />
+          </div>
+          <div class="quiz-text">
+            <h1 class="question-text" question="5">
+              De que forma era la maceta?
+            </h1>
+            <p class="incorrect answer" question="5">a) Caballo</p>
+            <p class="correct answer" question="5">b) Búho</p>
+            <p class="incorrect answer" question="5">c) Perro</p>
+          </div>
+        </div>
+
+        <div class="correct-question">
+          <img src="assets/correct.webp" class="question-res-img">
+          <h1>Correcto! Pasa a la siguiente pregunta</h1>
+          <button id="next">Siguiente</button>
+        </div>
+
+        <div class="incorrect-question">
+          <img src="assets/carnet.jpg" class="question-res-img">
+          <h1>
+            Onisac Otaner te ha comido, pero... Oh! Onisac Otaner hizo caca y
+            por suerte lograste escapar, llena de caca te dispones a intentarlo
+            de nuevo!
+          </h1>
+          <button id="retry">Intentar de nuevo</button>
+        </div>
+
+        <div class="end">
+          <h1>Este es el final, te doy esta carta</h1>
+        </div>
+
+        <style>
+
+          .end {
+            display: none;
+          }
+
+          .question-res-img {
+            width: 200px;
+            height: auto;
+          }
+
+          .correct-question,
+          .incorrect-question {
+            display: none;
+            max-width: 700px;
+            text-align: center;
+          }
+
+          .quiz {
+            display: block;
+          }
+
+          .question {
+            margin: auto;
+            display: none;
+            width: 100%;
+            gap: 20rem;
+            font-size: 25px;
+
+            .image-quiz img {
+              width: 100%;
+              max-width: 700px;
+            }
+
+            p.correct,
+            p.incorrect {
+              margin: 10px 20px;
+              cursor: pointer;
+            }
+
+            .answer:hover {
+              background-color: beige;
+            }
+
+            .question-text {
+              font-size: 30px;
+            }
+          }
+        </style>
+      </div>
+    </main>
+
+    <script>
+      function latido() {
+        $("#heart").css({ transform: "scale(1.2) rotate(-45deg)" });
+        setTimeout(() => {
+          $("#heart").css({ transform: "scale(1) rotate(-45deg)" });
+        }, 500);
+      }
+      setInterval(latido, 1000);
+
+      $("#heart").click(function () {
+        $(".step1").css({ display: "none" });
+        $(".step2").css({ display: "block" });
+      });
+
+      $("#step2-btn").click(function () {
+        $(".step2").css({ display: "none" });
+        $(".quiz").css({ display: "block" });
+        $(".question[question='" + 1 + "']").css({ display: "flex" });
+      });
+
+      $(".correct").click(function () {
+        var question = $(this).attr("question");
+        $(".correct-question").css({ display: "block" });
+        $(".question[question='" + question + "']").css({ display: "none" });
+
+        $("#next").off("click").on("click", function () {
+          question++;
+          console.log(question);
+          $(".correct-question").css({ display: "none" });
+          $(".question[question='" + question + "']").css({ display: "flex" });
+        });
+      });
+
+      $(".incorrect").click(function () {
+        $(".question").css({ display: "none" });
+        $(".incorrect-question").css({ display: "block" });
+
+        $("#retry").click(function() {
+          $(".incorrect-question").css({ display: "none" });
+          $(".question").css({ display: "none" });
+          $(".question[question='" + 1 + "']").css({ display: "flex" });
+          var question = 1;
+        });
+      });
+
+
+    </script>
+  </body>
+</html>
