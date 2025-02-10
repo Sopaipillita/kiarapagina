@@ -97,6 +97,10 @@
       .quiz {
         display: none;
       }
+
+      p#hist {
+        margin: 1rem;
+      }
     </style>
 
     <main>
@@ -106,7 +110,7 @@
       </div>
 
       <div class="step2 step">
-        <p>
+        <p class="hist">
           Has sido atrapada por Onisac Otaner, un ser misterioso con poderes
           inhumanos. En una sala oscura, te enfrentas a él, quien te observa en
           silencio. Con voz grave, te dice: <br /><br />
@@ -160,9 +164,15 @@
             <h1 class="question-text" question="3">
               Cual de estas es una de mis canciones favoritas?
             </h1>
-            <p class="incorrect answer" question="3">a) El Mono Tremendo - Luis Alberto Spinetta</p>
-            <p class="correct answer" question="3">b) La Sed Verdadera - Pescado Rabioso</p>
-            <p class="incorrect answer" question="3">c) Facts - Pvblo Chill-E</p>
+            <p class="incorrect answer" question="3">
+              a) El Mono Tremendo - Luis Alberto Spinetta
+            </p>
+            <p class="correct answer" question="3">
+              b) La Sed Verdadera - Pescado Rabioso
+            </p>
+            <p class="incorrect answer" question="3">
+              c) Facts - Pvblo Chill-E
+            </p>
           </div>
         </div>
 
@@ -195,13 +205,13 @@
         </div>
 
         <div class="correct-question">
-          <img src="assets/correct.webp" class="question-res-img">
+          <img src="assets/correct.webp" class="question-res-img" />
           <h1>Correcto! Pasa a la siguiente pregunta</h1>
           <button id="next">Siguiente</button>
         </div>
 
         <div class="incorrect-question">
-          <img src="assets/carnet.jpg" class="question-res-img">
+          <img src="assets/carnet.jpg" class="question-res-img" />
           <h1>
             Onisac Otaner te ha comido, pero... Oh! Onisac Otaner hizo caca y
             por suerte lograste escapar, llena de caca te dispones a intentarlo
@@ -215,7 +225,6 @@
         </div>
 
         <style>
-
           .end {
             display: none;
           }
@@ -240,7 +249,7 @@
             margin: auto;
             display: none;
             width: 100%;
-            gap: 20rem;
+            gap: 10%;
             font-size: 25px;
 
             .image-quiz img {
@@ -262,6 +271,18 @@
               font-size: 30px;
             }
           }
+
+          @media (max-width: 1200px) {
+            .question {
+              flex-wrap: wrap;
+              justify-content: center;
+            }
+
+            h1.question-text {
+              text-align: center;
+              margin: 1rem 0 0;
+            }
+          }
         </style>
       </div>
     </main>
@@ -274,6 +295,8 @@
         }, 500);
       }
       setInterval(latido, 1000);
+
+      latido();
 
       $("#heart").click(function () {
         $(".step1").css({ display: "none" });
@@ -291,27 +314,29 @@
         $(".correct-question").css({ display: "block" });
         $(".question[question='" + question + "']").css({ display: "none" });
 
-        $("#next").off("click").on("click", function () {
-          question++;
-          console.log(question);
-          $(".correct-question").css({ display: "none" });
-          $(".question[question='" + question + "']").css({ display: "flex" });
-        });
+        $("#next")
+          .off("click")
+          .on("click", function () {
+            question++;
+            console.log(question);
+            $(".correct-question").css({ display: "none" });
+            $(".question[question='" + question + "']").css({
+              display: "flex",
+            });
+          });
       });
 
       $(".incorrect").click(function () {
         $(".question").css({ display: "none" });
         $(".incorrect-question").css({ display: "block" });
 
-        $("#retry").click(function() {
+        $("#retry").click(function () {
           $(".incorrect-question").css({ display: "none" });
           $(".question").css({ display: "none" });
           $(".question[question='" + 1 + "']").css({ display: "flex" });
           var question = 1;
         });
       });
-
-
     </script>
   </body>
 </html>
